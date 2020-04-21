@@ -19,24 +19,116 @@
 		aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<h5 class="text-white h4" style="position: absolute; left: 45%">GERADOR DE TIME - CS GO</h5>
+	<h5 class="text-white h4" style="position: absolute; left: 38%">GERADOR DE TIME - CS GO </h5>
 	</nav>
   <center>
 
 	
+	<div class="list-group"  style="position:absolute;left:8%;right: 20%;top: 11%;margin-bottom:30px;width:300px;height:50px;">
+	  <button type="button" style="background-color:#1f292e;border-color:#1f292e;" class="list-group-item list-group-item-action active">
+		CLÃ RUTZ
+		<img src="rutz.jpeg" style="position:absolute;left:103%;top:3%" height="42" width="42"/>
+	  </button>
+	  <input id="c1" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c2" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c3" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c4" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c5" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c6" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c7" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c8" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c9" type="text" class="list-group-item list-group-item-action"></input>
+	  <input id="c10" type="text" class="list-group-item list-group-item-action"></input>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; 
+	  
+	  <div id="times" style="display: block;">
+		  <div class="list-group"  style="position:absolute;left:140%;right: 20%;top: 11%;margin-bottom:30px;width:300px;height:50px;">
+		  <button type="button" style="background-color:#1f292e;border-color:#1f292e;" class="list-group-item list-group-item-action active">
+			TIME 1
+			<h5 style="color: black;position:absolute;left:111%;top:14%">X</h5>
+		  </button>
+		  <input id="t1" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t2" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t3" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t4" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t5" type="text" class="list-group-item list-group-item-action"></input>
+		</div>
+		<div class="list-group"  style="position:absolute;left:265%;right: 20%;top: 11%;margin-bottom:30px;width:300px;height:50px;">
+		  <button type="button" style="background-color:#1f292e;border-color:#1f292e;" class="list-group-item list-group-item-action active">
+			TIME 2
+		  </button>
+		  <input id="t6" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t7" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t8" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t9" type="text" class="list-group-item list-group-item-action"></input>
+		  <input id="t10" type="text" class="list-group-item list-group-item-action"></input>
+		</div>
+	</div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 	
-
-
-
-
-
+	<button type="button" onclick="montaTime()" style="background-color:#1f292e;border-color:#1f292e;text-color:white;">Gerar</button>
+	</div>
 
 
 
 
 </center>
 
+<script type="text/javascript">
 
+var sorteados = [];
+var valorMaximo = 10;
+var ordemEscolhida = [10];
+var controladora;
+		function montaTime(){
+		    for (var i = sorteados.length; i > 0; i--) {
+				 sorteados[i]="";
+				}
+			console.log("TESTE");
+			for(var i=0;i<=9;i++){			 			
+				ordemEscolhida[i] = criarUnico();		
+			}
+			
+			for(var a=0;a<=9;a++){
+				var jogador = document.getElementById("c"+ordemEscolhida[a]).value;
+				document.getElementById("t"+(a+1)).value = jogador;
+			}
+			console.log(ordemEscolhida);
+			//div.style.display = "block";
+		}
+
+
+		function getRandomIntInclusive(min, max) {
+		  min = Math.ceil(min);
+		  max = Math.floor(max);
+		  return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+
+		function verificaDuplo(ordemEscolhida){
+			return (new Set(ordemEscolhida)).size !== ordemEscolhida.length;
+		}
+
+
+
+
+function criarUnico() {
+    //if (sorteados.length == valorMaximo) {
+    //   if (confirm('Já não há mais! Quer recomeçar?')) sorteados = [];
+    //    else return;
+    //}
+    var sugestao = Math.ceil(Math.random() * valorMaximo); // Escolher um numero ao acaso
+    while (sorteados.indexOf(sugestao) >= 0) {  // Enquanto o numero já existir, escolher outro
+        sugestao = Math.ceil(Math.random() * valorMaximo);
+    }
+    sorteados.push(sugestao); // adicionar este numero à array de numeros sorteados para futura referência
+    return sugestao; // devolver o numero único
+}
+
+
+
+
+</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -44,5 +136,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+		
+
 </body>
 </html>
